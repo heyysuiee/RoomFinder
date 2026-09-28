@@ -43,6 +43,7 @@ h2 {
 }
 
 .dashboard-content {
+  --background: #f3f7fc;
   --padding-bottom: 12px;
 }
 
@@ -50,9 +51,11 @@ h2 {
   display: flex;
   min-height: 100%;
   flex-direction: column;
-  gap: 26px;
+  gap: 28px;
   box-sizing: border-box;
-  padding: 24px 20px;
+  width: min(100%, 600px);
+  margin: 0 auto;
+  padding: calc(20px + env(safe-area-inset-top)) 20px 28px;
 }
 
 .dashboard-header,
@@ -71,11 +74,22 @@ h2 {
 }
 
 .dashboard-header .brand > ion-icon {
-  font-size: 30px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  place-items: center;
+  padding: 9px;
+  border-radius: 13px;
+  background: var(--color-600);
+  color: #fff;
+  font-size: 22px;
 }
 
 .dashboard-header .brand h1 {
-  font-size: 1.4rem;
+  color: var(--color-900);
+  font-size: 1.3rem;
+  text-align: left;
 }
 
 .notification-button {
@@ -84,7 +98,9 @@ h2 {
   margin: 0;
   --color: var(--color-800);
   --background: #fff;
-  --border-radius: 14px;
+  --border-radius: 13px;
+  --border-width: 1px;
+  --border-color: #e2eaf3;
 }
 
 .notification-button ion-icon {
@@ -99,20 +115,25 @@ h2 {
   font-weight: 700;
 }
 
+.greeting h2 {
+  font-size: 1.75rem;
+  line-height: 1.15;
+}
+
 .greeting p {
-  margin: 6px 0 0;
-  color: var(--color-700);
+  margin: 8px 0 0;
+  color: #536b82;
   font-size: 0.95rem;
 }
 
 .search-section {
   display: grid;
   gap: 12px;
-  padding: 16px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 10px 28px rgba(5, 68, 112, 0.08);
+  padding: 14px;
+  border: 1px solid #e2eaf3;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(5, 68, 112, 0.07);
 }
 
 .room-search {
@@ -123,12 +144,6 @@ h2 {
   --color: var(--color-900);
   --icon-color: var(--color-600);
   --placeholder-color: var(--color-700);
-}
-
-.select-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
 }
 
 .search-button {
@@ -144,7 +159,7 @@ h2 {
 
 .quick-access {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 .quick-access h2 {
@@ -153,55 +168,62 @@ h2 {
 
 .quick-links {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .quick-link {
   display: grid;
   justify-items: center;
   gap: 8px;
-  padding: 0;
+  min-width: 0;
+  padding: 4px 0;
   border: 0;
   background: transparent;
-  color: var(--color-800);
+  color: #405a73;
   font: inherit;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 
 .quick-icon {
   display: grid;
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   place-items: center;
-  border: 1px solid #fff;
-  border-radius: 17px;
-  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid #e2eaf3;
+  border-radius: 15px;
+  background: #fff;
   color: var(--color-600);
-  box-shadow: 0 5px 14px rgba(5, 68, 112, 0.06);
+  box-shadow: 0 4px 12px rgba(5, 68, 112, 0.05);
+  transition: transform 160ms ease, background-color 160ms ease;
 }
 
 .quick-icon ion-icon {
   font-size: 24px;
 }
 
+.quick-link:active .quick-icon {
+  transform: scale(0.94);
+  background: var(--color-50);
+}
+
 .bottom-nav {
-  border-top: 1px solid rgba(5, 68, 112, 0.08);
+  border-top: 1px solid #e2eaf3;
   background: #fff;
+  box-shadow: 0 -5px 18px rgba(5, 68, 112, 0.04);
   padding-bottom: env(safe-area-inset-bottom);
 }
 
 .help-content {
+  --color-600: #111;
+  --color-700: #111;
+  --color-800: #111;
+  --color-900: #000;
   --padding-bottom: 24px;
 }
 
-.settings-content {
-  --padding-bottom: 24px;
-}
-
-.help-page,
-.settings-page {
+.help-page {
   display: grid;
   gap: 24px;
   box-sizing: border-box;
@@ -298,7 +320,11 @@ h2 {
   line-height: 1.5;
 }
 
-.how-to-list li::marker,
+.how-to-list li::marker {
+  color: #111;
+  font-weight: 700;
+}
+
 .report-section li::marker {
   color: var(--color-500);
   font-weight: 700;
@@ -359,74 +385,11 @@ h2 {
   line-height: 1.45;
 }
 
-.settings-group {
-  display: grid;
-  gap: 12px;
-  padding: 16px;
-  border: 1px solid #fff;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.settings-group h2 {
-  margin: 0;
-  color: var(--color-900);
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.setting-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 48px;
-  color: var(--color-800);
-  font-weight: 600;
-}
-
-.setting-row ion-toggle {
-  --size: 24px;
-  --handle-width: 18px;
-  --handle-height: 18px;
-  --handle-border-radius: 50%;
-}
-
-.setting-row ion-select {
-  width: 145px;
-  min-height: 38px;
-  --padding-start: 12px;
-  --padding-end: 12px;
-  border: 1px solid var(--color-100);
-  border-radius: 10px;
-  background: #fff;
-}
-
-.select-row {
-  padding-top: 2px;
-}
-
-.settings-action {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 44px;
-  padding: 0 12px;
-  border: 1px solid rgba(11, 147, 244, 0.15);
-  border-radius: 12px;
-  background: rgba(231, 244, 254, 0.9);
-  color: var(--color-800);
-  font: inherit;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-align: left;
-}
-
 .bottom-nav nav {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  min-height: 64px;
-  padding: 6px 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  min-height: 66px;
+  padding: 7px 8px;
 }
 
 .nav-item {
@@ -438,8 +401,9 @@ h2 {
   background: transparent;
   color: var(--color-700);
   font: inherit;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .nav-item ion-icon {
@@ -453,8 +417,6 @@ h2 {
 
 @media (min-width: 600px) {
   .dashboard {
-    width: min(100%, 560px);
-    margin: 0 auto;
     padding-right: 28px;
     padding-left: 28px;
   }

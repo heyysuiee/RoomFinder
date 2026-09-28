@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,58 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['home.page.scss', 'Splash.page.css'],
   standalone: false,
 })
-export class HomePage implements OnInit {
+export class HomePage {
   showSplash = true;
   showDashboard = false;
   showHelp = false;
-  showSettings = false;
   problemLocation = '';
   problemDetails = '';
   reportStatus = '';
   isSharingReport = false;
 
-  voiceInstructions = true;
-  autoRecalculateRoute = true;
-  locationAccess = true;
-  notifications = true;
-  darkMode = false;
-  language = 'English';
-
-  ngOnInit(): void {
-    this.applyTheme();
-  }
-
-  applyTheme(): void {
-    document.body.classList.toggle('dark-theme', this.darkMode);
-  }
-
   openDashboard(): void {
     this.showSplash = false;
     this.showDashboard = true;
     this.showHelp = false;
-    this.showSettings = false;
   }
 
   openHelp(): void {
     this.showSplash = false;
     this.showHelp = true;
-    this.showSettings = false;
   }
 
   closeHelp(): void {
     this.showHelp = false;
-  }
-
-  openSettings(): void {
-    this.showSplash = false;
-    this.showDashboard = true;
-    this.showHelp = false;
-    this.showSettings = true;
-  }
-
-  closeSettings(): void {
-    this.showSplash = false;
-    this.showSettings = false;
   }
 
   async submitProblemReport(): Promise<void> {

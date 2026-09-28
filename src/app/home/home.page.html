@@ -13,7 +13,7 @@
   </main>
 </ion-content>
 
-<ion-content *ngIf="showDashboard && !showHelp && !showSettings" [fullscreen]="true" class="home-background dashboard-content">
+<ion-content *ngIf="showDashboard && !showHelp" [fullscreen]="true" class="home-background dashboard-content">
   <main class="dashboard">
     <header class="dashboard-header">
       <div class="brand">
@@ -54,72 +54,11 @@
           <span class="quick-icon"><ion-icon name="time-outline" aria-hidden="true"></ion-icon></span>
           <span>Recent</span>
         </button>
-        <button class="quick-link" type="button" (click)="openSettings()">
-          <span class="quick-icon"><ion-icon name="settings-outline" aria-hidden="true"></ion-icon></span>
-          <span>Settings</span>
-        </button>
         <button class="quick-link" type="button" (click)="openHelp()">
           <span class="quick-icon"><ion-icon name="help-circle-outline" aria-hidden="true"></ion-icon></span>
           <span>Help</span>
         </button>
       </div>
-    </section>
-  </main>
-</ion-content>
-
-<ion-content *ngIf="showSettings" [fullscreen]="true" class="home-background settings-content">
-  <main class="settings-page">
-    <header class="help-header">
-      <ion-button class="back-button" fill="clear" (click)="closeSettings()" aria-label="Back to dashboard">
-        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-      </ion-button>
-      <h1>Settings</h1>
-    </header>
-
-    <section class="settings-group">
-      <h2>Navigation</h2>
-
-      <div class="setting-row">
-        <span>Auto-Recalculate Route</span>
-        <ion-toggle [(ngModel)]="autoRecalculateRoute" name="autoRecalculateRoute" aria-label="Auto-Recalculate Route"></ion-toggle>
-      </div>
-      <div class="setting-row">
-        <span>Location Access</span>
-        <ion-toggle [(ngModel)]="locationAccess" name="locationAccess" aria-label="Location Access"></ion-toggle>
-      </div>
-    </section>
-
-    <section class="settings-group">
-      <h2>App Preferences</h2>
-
-      <div class="setting-row">
-        <span>Notifications</span>
-        <ion-toggle [(ngModel)]="notifications" name="notifications" aria-label="Notifications"></ion-toggle>
-      </div>
-      <div class="setting-row">
-        <span>Dark Mode</span>
-        <ion-toggle [(ngModel)]="darkMode" name="darkMode" aria-label="Dark Mode"></ion-toggle>
-      </div>
-
-      <div class="setting-row select-row">
-        <span>Language</span>
-        <ion-select [(ngModel)]="language" name="language" interface="popover" aria-label="Language">
-          <ion-select-option value="English">English</ion-select-option>
-          <ion-select-option value="Filipino">Filipino</ion-select-option>
-        </ion-select>
-      </div>
-    </section>
-
-    <section class="settings-group">
-      <h2>Search &amp; Navigation</h2>
-      <button class="settings-action" type="button">Clear Recent Searches</button>
-      <button class="settings-action" type="button">Manage Saved Rooms</button>
-    </section>
-
-    <section class="settings-group">
-      <h2>Support</h2>
-      <button class="settings-action" type="button" (click)="openHelp()">Help &amp; Support</button>
-      <button class="settings-action" type="button">About RoomFinder</button>
     </section>
   </main>
 </ion-content>
@@ -173,9 +112,9 @@
           id="problem-location"
           name="problemLocation"
           [(ngModel)]="problemLocation"
-          placeholder="e.g. Building 2, Room 105"
+          placeholder="e.g. Room 105"
         ></ion-input>
-
+        
         <label for="problem-details">What happened?</label>
         <ion-textarea
           id="problem-details"
@@ -188,7 +127,7 @@
 
         <ion-button class="search-button" type="submit" expand="block" [disabled]="isSharingReport">
           <ion-icon slot="start" name="share-outline"></ion-icon>
-          {{ isSharingReport ? 'Preparing report…' : 'Share report' }}
+          {{ isSharingReport ? 'Preparing report…' : 'Send Report' }}
         </ion-button>
         <p class="report-status" role="status" aria-live="polite" *ngIf="reportStatus">
           {{ reportStatus }}
@@ -211,10 +150,6 @@
     <button class="nav-item" type="button">
       <ion-icon name="bookmark-outline" aria-hidden="true"></ion-icon>
       <span>Saved</span>
-    </button>
-    <button class="nav-item" type="button">
-      <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
-      <span>Profile</span>
     </button>
   </nav>
 </ion-footer>
