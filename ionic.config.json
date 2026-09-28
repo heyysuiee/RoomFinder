@@ -1,0 +1,7 @@
+{
+  "name": "RoomFinderApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

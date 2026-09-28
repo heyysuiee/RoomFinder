@@ -1,0 +1,162 @@
+<ion-content *ngIf="!showDashboard" [fullscreen]="true" class="home-background">
+  <main class="welcome">
+    <header class="brand">
+      <ion-icon class="room-icon" name="location" aria-hidden="true"></ion-icon>
+      <h1>Room <span class="finder-word">Finder</span></h1>
+    </header>
+    <section class="welcome-content">
+      <p class="location-label">NEUST PAPAYA OFF CAMPUS</p>
+      <h2>Find Your Room, Find Your Way.</h2>
+    </section>
+    <ion-button class="start-button" expand="block" (click)="openDashboard()">Start</ion-button>
+  </main>
+</ion-content>
+
+<ion-content *ngIf="showDashboard && !showHelp" [fullscreen]="true" class="home-background dashboard-content">
+  <main class="dashboard">
+    <header class="dashboard-header">
+      <div class="brand">
+        <ion-icon name="location" aria-hidden="true"></ion-icon>
+        <h1>Room <span class="finder-word">Finder</span></h1>
+      </div>
+      <ion-button class="notification-button" fill="clear" aria-label="Notifications">
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+    </header>
+
+    <section class="greeting">
+      <h2>Hello, Student!</h2>
+      <p>Where do you want to go today?</p>
+    </section>
+
+    <section class="search-section" aria-label="Search for a room">
+      <ion-searchbar
+        class="room-search"
+        placeholder="Search rooms"
+        aria-label="Search rooms"
+      ></ion-searchbar>
+
+      <ion-button class="search-button" expand="block">
+        <ion-icon slot="start" name="search-outline"></ion-icon>
+        Search
+      </ion-button>
+    </section>
+
+    <section class="quick-access" aria-labelledby="quick-access-title">
+      <h2 id="quick-access-title">Quick Access</h2>
+      <div class="quick-links">
+        <button class="quick-link" type="button">
+          <span class="quick-icon"><ion-icon name="map-outline" aria-hidden="true"></ion-icon></span>
+          <span>Map</span>
+        </button>
+        <button class="quick-link" type="button">
+          <span class="quick-icon"><ion-icon name="time-outline" aria-hidden="true"></ion-icon></span>
+          <span>Recent</span>
+        </button>
+        <button class="quick-link" type="button">
+          <span class="quick-icon"><ion-icon name="settings-outline" aria-hidden="true"></ion-icon></span>
+          <span>Settings</span>
+        </button>
+        <button class="quick-link" type="button" (click)="openHelp()">
+          <span class="quick-icon"><ion-icon name="help-circle-outline" aria-hidden="true"></ion-icon></span>
+          <span>Help</span>
+        </button>
+      </div>
+    </section>
+  </main>
+</ion-content>
+
+<ion-content *ngIf="showHelp" [fullscreen]="true" class="home-background help-content">
+  <main class="help-page">
+    <header class="help-header">
+      <ion-button class="back-button" fill="clear" (click)="closeHelp()" aria-label="Back to dashboard">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <h1>Help &amp; Support</h1>
+    </header>
+
+    <section class="help-intro">
+      <p class="location-label">ROOMFINDER SUPPORT</p>
+      <h2>How can we help?</h2>
+      <p>Find answers, learn how to use RoomFinder, or get help with a problem.</p>
+    </section>
+
+    <section class="help-section" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title"><ion-icon name="help-circle-outline" aria-hidden="true"></ion-icon> FAQ</h2>
+      <details class="faq-item">
+        <summary>How do I find a room?</summary>
+        <p>Enter a room name or keyword in the search field, then tap Search.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I narrow my search?</summary>
+        <p>Use the building and floor filters when they are available to refine your results.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I find a room on campus?</summary>
+        <p>Open Map from Quick Access to view the campus map and locate rooms.</p>
+      </details>
+    </section>
+
+    <section class="help-section" id="how-to" aria-labelledby="how-to-title">
+      <h2 id="how-to-title"><ion-icon name="list-outline" aria-hidden="true"></ion-icon> How to Use</h2>
+      <ol class="how-to-list">
+        <li>Enter a room name or keyword in the dashboard search field.</li>
+        <li>Add the room or location details if you are reporting an issue.</li>
+        <li>Use the Help screen to review answers or share a problem report.</li>
+      </ol>
+    </section>
+
+    <section class="help-section report-section" id="report" aria-labelledby="report-title">
+      <h2 id="report-title"><ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon> Report a Problem</h2>
+      <p>Describe the issue, then share the report with your campus support team.</p>
+      <form class="report-form" (ngSubmit)="submitProblemReport()">
+        <label for="problem-location">Room or location <span>(optional)</span></label>
+        <ion-input
+          id="problem-location"
+          name="problemLocation"
+          [(ngModel)]="problemLocation"
+          placeholder="e.g. Building 2, Room 105"
+        ></ion-input>
+
+        <label for="problem-details">What happened?</label>
+        <ion-textarea
+          id="problem-details"
+          name="problemDetails"
+          [(ngModel)]="problemDetails"
+          placeholder="Tell us what you were trying to do and what went wrong"
+          rows="4"
+          required
+        ></ion-textarea>
+
+        <ion-button class="search-button" type="submit" expand="block" [disabled]="isSharingReport">
+          <ion-icon slot="start" name="share-outline"></ion-icon>
+          {{ isSharingReport ? 'Preparing report…' : 'Share report' }}
+        </ion-button>
+        <p class="report-status" role="status" aria-live="polite" *ngIf="reportStatus">
+          {{ reportStatus }}
+        </p>
+      </form>
+    </section>
+  </main>
+</ion-content>
+
+<ion-footer *ngIf="showDashboard && !showHelp" class="bottom-nav">
+  <nav aria-label="Main navigation">
+    <button class="nav-item active" type="button" aria-current="page">
+      <ion-icon name="home" aria-hidden="true"></ion-icon>
+      <span>Home</span>
+    </button>
+    <button class="nav-item" type="button">
+      <ion-icon name="map-outline" aria-hidden="true"></ion-icon>
+      <span>Map</span>
+    </button>
+    <button class="nav-item" type="button">
+      <ion-icon name="bookmark-outline" aria-hidden="true"></ion-icon>
+      <span>Saved</span>
+    </button>
+    <button class="nav-item" type="button">
+      <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+      <span>Profile</span>
+    </button>
+  </nav>
+</ion-footer>
