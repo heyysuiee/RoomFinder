@@ -118,4 +118,20 @@
   .splash-symbol {
     transform: translateY(-35px);
   }
+
+  .splash-copy {
+    animation-name: copyFadeHold;
+    animation-duration: 3.5s;
+    transform: none;
+  }
+}
+
+@keyframes copyFadeHold {
+  0% {
+    opacity: 0;
+  }
+  14.3%,
+  100% {
+    opacity: 1;
+  }
 }
