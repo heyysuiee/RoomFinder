@@ -13,42 +13,12 @@
   --background: linear-gradient(145deg, #FFFFFF 0%, var(--color-50) 58%, var(--color-100) 100%);
 }
 
-.welcome {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  box-sizing: border-box;
-  padding: 28px 24px calc(24px + env(safe-area-inset-bottom));
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.welcome-content {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-  padding: 32px 0;
-  text-align: center;
-}
-
-.room-icon {
-  flex: 0 0 auto;
-  color: var(--color-500);
-  font-size: 42px;
-}
-
 h1 {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--color-800);
-  text-align: left;
+  text-align: center;
 }
 
 .finder-word {
@@ -58,10 +28,10 @@ h1 {
 h2 {
   margin: 0;
   color: var(--color-900);
-  font-size: clamp(2rem, 8vw, 2.75rem);
+  font-size: clamp(2rem, 8vw, 2.7rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .location-label {
@@ -69,7 +39,7 @@ h2 {
   color: var(--color-600);
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
 }
 
 .description {
@@ -78,18 +48,6 @@ h2 {
   color: var(--color-700);
   font-size: 1rem;
   line-height: 1.6;
-}
-
-.start-button {
-  width: 100%;
-  margin: 0;
-  --background: var(--color-600);
-  --background-activated: var(--color-700);
-  --border-radius: 14px;
-  --box-shadow: 0 8px 18px rgba(9, 120, 200, 0.22);
-  font-size: 1rem;
-  font-weight: 700;
-  min-height: 52px;
 }
 
 .dashboard-content {
@@ -258,7 +216,12 @@ h2 {
   --padding-bottom: 24px;
 }
 
-.help-page {
+.settings-content {
+  --padding-bottom: 24px;
+}
+
+.help-page,
+.settings-page {
   display: grid;
   gap: 24px;
   box-sizing: border-box;
@@ -414,6 +377,69 @@ h2 {
   color: var(--color-700);
   font-size: 0.9rem;
   line-height: 1.45;
+}
+
+.settings-group {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #fff;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.settings-group h2 {
+  margin: 0;
+  color: var(--color-900);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  color: var(--color-800);
+  font-weight: 600;
+}
+
+.setting-row ion-toggle {
+  --size: 24px;
+  --handle-width: 18px;
+  --handle-height: 18px;
+  --handle-border-radius: 50%;
+}
+
+.setting-row ion-select {
+  width: 145px;
+  min-height: 38px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  border: 1px solid var(--color-100);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.select-row {
+  padding-top: 2px;
+}
+
+.settings-action {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgba(11, 147, 244, 0.15);
+  border-radius: 12px;
+  background: rgba(231, 244, 254, 0.9);
+  color: var(--color-800);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
 }
 
 .bottom-nav nav {

@@ -1,4 +1,5 @@
-<ion-content *ngIf="!showDashboard" [fullscreen]="true" class="home-background">
+
+<ion-content *ngIf="showSplash" [fullscreen]="true" class="home-background splash-content">
   <main class="welcome">
     <header class="brand">
       <ion-icon class="room-icon" name="location" aria-hidden="true"></ion-icon>
@@ -12,7 +13,7 @@
   </main>
 </ion-content>
 
-<ion-content *ngIf="showDashboard && !showHelp" [fullscreen]="true" class="home-background dashboard-content">
+<ion-content *ngIf="showDashboard && !showHelp && !showSettings" [fullscreen]="true" class="home-background dashboard-content">
   <main class="dashboard">
     <header class="dashboard-header">
       <div class="brand">
@@ -53,7 +54,7 @@
           <span class="quick-icon"><ion-icon name="time-outline" aria-hidden="true"></ion-icon></span>
           <span>Recent</span>
         </button>
-        <button class="quick-link" type="button">
+        <button class="quick-link" type="button" (click)="openSettings()">
           <span class="quick-icon"><ion-icon name="settings-outline" aria-hidden="true"></ion-icon></span>
           <span>Settings</span>
         </button>
@@ -62,6 +63,63 @@
           <span>Help</span>
         </button>
       </div>
+    </section>
+  </main>
+</ion-content>
+
+<ion-content *ngIf="showSettings" [fullscreen]="true" class="home-background settings-content">
+  <main class="settings-page">
+    <header class="help-header">
+      <ion-button class="back-button" fill="clear" (click)="closeSettings()" aria-label="Back to dashboard">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <h1>Settings</h1>
+    </header>
+
+    <section class="settings-group">
+      <h2>Navigation</h2>
+
+      <div class="setting-row">
+        <span>Auto-Recalculate Route</span>
+        <ion-toggle [(ngModel)]="autoRecalculateRoute" name="autoRecalculateRoute" aria-label="Auto-Recalculate Route"></ion-toggle>
+      </div>
+      <div class="setting-row">
+        <span>Location Access</span>
+        <ion-toggle [(ngModel)]="locationAccess" name="locationAccess" aria-label="Location Access"></ion-toggle>
+      </div>
+    </section>
+
+    <section class="settings-group">
+      <h2>App Preferences</h2>
+
+      <div class="setting-row">
+        <span>Notifications</span>
+        <ion-toggle [(ngModel)]="notifications" name="notifications" aria-label="Notifications"></ion-toggle>
+      </div>
+      <div class="setting-row">
+        <span>Dark Mode</span>
+        <ion-toggle [(ngModel)]="darkMode" name="darkMode" aria-label="Dark Mode"></ion-toggle>
+      </div>
+
+      <div class="setting-row select-row">
+        <span>Language</span>
+        <ion-select [(ngModel)]="language" name="language" interface="popover" aria-label="Language">
+          <ion-select-option value="English">English</ion-select-option>
+          <ion-select-option value="Filipino">Filipino</ion-select-option>
+        </ion-select>
+      </div>
+    </section>
+
+    <section class="settings-group">
+      <h2>Search &amp; Navigation</h2>
+      <button class="settings-action" type="button">Clear Recent Searches</button>
+      <button class="settings-action" type="button">Manage Saved Rooms</button>
+    </section>
+
+    <section class="settings-group">
+      <h2>Support</h2>
+      <button class="settings-action" type="button" (click)="openHelp()">Help &amp; Support</button>
+      <button class="settings-action" type="button">About RoomFinder</button>
     </section>
   </main>
 </ion-content>
