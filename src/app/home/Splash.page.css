@@ -53,7 +53,7 @@
   text-align: center;
   opacity: 0;
   transform: translateY(10px);
-  animation: copyReveal 3.5s ease-out 1.35s forwards;
+  animation: copyReveal 2.5s ease-out 1.35s forwards;
 }
 
 .splash-copy h1 {
@@ -95,7 +95,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
-  14.3%,
+  20%,
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -121,7 +121,7 @@
 
   .splash-copy {
     animation-name: copyFadeHold;
-    animation-duration: 3.5s;
+    animation-duration: 2.5s;
     transform: none;
   }
 }
@@ -130,7 +130,7 @@
   0% {
     opacity: 0;
   }
-  14.3%,
+  20%,
   100% {
     opacity: 1;
   }
