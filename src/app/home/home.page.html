@@ -1,15 +1,15 @@
 
 <ion-content *ngIf="showSplash" [fullscreen]="true" class="home-background splash-content">
-  <main class="welcome">
-    <header class="brand">
-      <ion-icon class="room-icon" name="location" aria-hidden="true"></ion-icon>
-      <h1>Room <span class="finder-word">Finder</span></h1>
-    </header>
-    <section class="welcome-content">
-      <p class="location-label">NEUST PAPAYA OFF CAMPUS</p>
-      <h2>Find Your Room, Find Your Way.</h2>
+  <main class="splash-sequence" aria-label="RoomFinder">
+    <div class="splash-circle" aria-hidden="true"></div>
+    <svg class="splash-symbol" viewBox="0 0 64 72" aria-hidden="true">
+      <path class="splash-pin-shape" d="M32 68S9 46 9 26a23 23 0 1 1 46 0C55 46 32 68 32 68Z"></path>
+      <path class="splash-cap-shape" d="m15 24 17-9 17 9-17 9-17-9Zm7 4v9c6 5 16 5 22 0v-9m-3 5 5-3v10"></path>
+    </svg>
+    <section class="splash-copy" aria-label="Find Your Room, Find Your Way" (animationend)="openDashboard()">
+      <h1>RoomFinder</h1>
+      <p>Find Your Room, Find Your Way</p>
     </section>
-    <ion-button class="start-button" expand="block" (click)="openDashboard()">Start</ion-button>
   </main>
 </ion-content>
 
